@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114014644) do
+ActiveRecord::Schema.define(version: 20170114072817) do
 
   create_table "properties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 20170114014644) do
     t.boolean  "smokers_allow"
     t.boolean  "pets_allow"
     t.text     "upcoming_open_date", limit: 65535
+    t.string   "image"
+    t.string   "picture"
   end
 
 end
