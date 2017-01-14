@@ -1,18 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Property</h1>
+
 <p>
   <strong>Title:</strong>
   <%= @property.title %>
 </p>
 
 <p>
-  <strong>Location:</strong>
-  <%= @property.location %>
+  <strong>Address:</strong>
+  <%= @property.address %>
 </p>
 
 <p>
   <strong>Description:</strong>
   <%= @property.description %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <td><%= image_tag @property.picture.url if @property.picture? %><td>
 </p>
 
 <p>
