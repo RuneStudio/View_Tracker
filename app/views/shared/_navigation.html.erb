@@ -1,10 +1,19 @@
 <nav class="nav-extended">
    <div class="nav-wrapper">
-     <a href="/" class="brand-logo"><%= image_tag "logo.png" %></a>
+     <a href="/" class="brand-logo"><%= image_tag "logo.png" %><spam style="font-size:15px;">Beta</spam></a>
      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="/properties">Add a open home</a></li>
-        <li><a href="#">Search property</a></li>
+        <li>
+          <%= link_to('Add A Open Home', new_property_path) %>
+        </li>
+        <li>
+          <%= link_to('Search Property', properties_path) %>
+        </li>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to('Manage Property', properties_path) %>
+          </li>
+        <% end %>
         <% if user_signed_in? %>
           <li>
           <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
@@ -22,12 +31,3 @@
       </ul>
    </div>
  </nav>
-
- <div class="header-image">
-   <div class="header-text">
-     <div class="text-content">
-       Track your open home with a click
-     </div>
-     <a class="waves-effect waves-light btn">How it works</a>
-   </div>
- </div>

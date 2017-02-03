@@ -26,6 +26,10 @@ nav ul a{
   text-transform: uppercase;
 }
 
+nav ul a:first{
+  border: 1px solid #fff;
+}
+
 .header-text{
   text-align: center;
 }
@@ -37,7 +41,6 @@ nav ul a{
 }
 
 .header-image{
-  background-image: url(<%= asset_path 'back.jpg' %>);
   background-position: bottom;
   transition: all 0.25s ease;
   background-color: #4D4D4D;
@@ -50,4 +53,20 @@ nav ul a{
   padding: 135px 0 66px;
   position: relative;
   z-index: 100;
+}
+
+.home-header{
+  background-image: url(<%= asset_path 'back.jpg' %>);
+}
+
+.search-header{
+  background-image: url(<%= asset_path 'search-header.jpg' %>);
+}
+
+.new-header{
+  background-image: url(<%= asset_path 'add-open-home.jpg' %>);
+}
+
+.sign-in-header{
+  background-image: url(<%= asset_path 'sign-in.jpg' %>);
 }

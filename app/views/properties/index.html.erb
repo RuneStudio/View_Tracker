@@ -1,39 +1,41 @@
+<%= render "shared/search_header" %>
+
 <p id="notice"><%= notice %></p>
 
-<h1>All Properties</h1>
-
-<table>
-  <tbody>
-    <% @properties.each do |property| %>
+<div class="container">
+  <table>
+    <tbody>
       <div class="row">
-        <div class="col s12 m6">
-          <div class="card property">
-            <div class="card-image property-image">
-              <%= image_tag property.picture.url if property.picture? %>
+        <% @properties.each do |property| %>
+            <div class="col s6">
+              <div class="card property">
+                <div class="card-image property-image">
+                  <%= image_tag property.picture.url if property.picture? %>
+                </div>
+                <div class="card-content">
+                  <span class="property-title"><%= property.title %></span>
+                  <br>
+                  <span class="property-content">Description: <%= property.description %></span>
+                  <br>
+                  <span class="property-content">Bedroom: <%= property.bedrooms %></span>
+                  <br>
+                  <span class="property-content">Bathrooms: <%= property.bathrooms %></span>
+                  <br>
+                  <span class="property-content">Suburb: <%= property.suburb %>, <%= property.city %></span>
+                </div>
+                <div class="card-action">
+                  <%= link_to 'Read More', property %>
+                  <%= link_to 'Edit', edit_property_path(property) %>
+                  <%= link_to 'Delete', property, method: :delete, data: { confirm: 'Are you sure?' } %>
+                </div>
+              </div>
             </div>
-            <div class="card-content">
-              <span class="property-title"><%= property.title %></span>
-              <br>
-              <span class="property-content">Description: <%= property.description %></span>
-              <br>
-              <span class="property-content">Bedroom: <%= property.bedrooms %></span>
-              <br>
-              <span class="property-content">Bathrooms: <%= property.bathrooms %></span>
-              <br>
-              <span class="property-content">Suburb: <%= property.suburb %>, <%= property.city %></span>
-            </div>
-            <div class="card-action">
-              <%= link_to 'Read More', property %>
-              <%= link_to 'Edit', edit_property_path(property) %>
-              <%= link_to 'Delete', property, method: :delete, data: { confirm: 'Are you sure?' } %>
-            </div>
-          </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'New Property', new_property_path %>
+  <%= link_to 'New Property', new_property_path %>
+</div>

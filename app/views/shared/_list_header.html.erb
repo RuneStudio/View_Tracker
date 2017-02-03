@@ -1,0 +1,12 @@
+<div class="header-image list-header">
+  <%= image_tag @property.picture.url if @property.picture? %>
+ <div class="header-text">
+   <div class="text-content">
+     <%= @property.title %>
+   </div>
+
+   <%= button_to "Search", properties_path,
+         :class => "waves-effect waves-light btn", :method => :get %>
+
+ </div>
+</div>

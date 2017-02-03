@@ -1,0 +1,41 @@
+<div class="header-image search-header">
+ <div class="header-text">
+   <div class="text-content">
+     Where would you like to move?
+   </div>
+   <div class="row">
+     <form class="col s12">
+       <div class="row">
+         <div class="input-field col s4">
+           <select>
+             <option value="" disabled selected>Where</option>
+             <option value="1">Option 1</option>
+             <option value="2">Option 2</option>
+             <option value="3">Option 3</option>
+           </select>
+         </div>
+         <div class="input-field col s4">
+           <select>
+             <option value="" disabled selected>City</option>
+             <option value="1">Option 1</option>
+             <option value="2">Option 2</option>
+             <option value="3">Option 3</option>
+           </select>
+         </div>
+         <div class="input-field col s4">
+           <select>
+              <option value="" disabled selected>Choose your option</option>
+              <option value="1">Option 1</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
+            </select>
+         </div>
+       </div>
+     </form>
+   </div>
+
+   <%= button_to "Search", properties_path,
+         :class => "waves-effect waves-light btn", :method => :get %>
+
+ </div>
+</div>
