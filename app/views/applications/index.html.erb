@@ -1,0 +1,30 @@
+<%= render "applications/new_application_header" %>
+
+<div class="container page-container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Applications</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+
+    <tbody>
+      <% @applications.each do |application| %>
+        <tr>
+          <td><%= application.title %></td>
+          <td><%= link_to 'Show', property_application_path(application.property_id, application) %></td>
+          <td><%= link_to 'Edit', edit_property_application_path(application.property_id, application) %></td>
+          <td><%= link_to 'Destroy', property_application_path(application.property_id, application), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Show Property', property_path(application.property_id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,1 @@
+json.array! @open_home_times, partial: 'open_home_times/open_home_time', as: :open_home_time

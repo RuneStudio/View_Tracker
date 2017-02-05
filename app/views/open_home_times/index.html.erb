@@ -1,0 +1,28 @@
+<%= render "applications/new_application_header" %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>Open Home Times</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @open_home_times.each do |open_home_time| %>
+      <tr>
+        <td><%= open_home_time.time %></td>
+        <td><%= link_to 'Show', property_open_home_time_path(open_home_time.property, open_home_time) %></td>
+        <td><%= link_to 'Edit', edit_property_open_home_time_path(open_home_time.property, open_home_time) %></td>
+        <td><%= link_to 'Destroy', property_open_home_time_path(open_home_time.property, open_home_time), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Open Home Time', new_property_open_home_time_path(params[:property_id]) %>

@@ -10,32 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170202222328) do
+ActiveRecord::Schema.define(version: 20170204200405) do
 
-  create_table "models", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.index ["email"], name: "index_models_on_email", unique: true, using: :btree
-    t.index ["reset_password_token"], name: "index_models_on_reset_password_token", unique: true, using: :btree
+  create_table "applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.integer  "property_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "current_address"
+    t.string   "birthday"
+    t.string   "identity_type"
+    t.string   "identify_number"
+    t.integer  "phone_number"
+    t.integer  "mobile_number"
+    t.string   "cv"
+    t.string   "identidy_image"
+    t.string   "note"
+    t.string   "question_1"
+    t.string   "question_2"
+    t.string   "question_3"
+    t.string   "question_4"
+    t.string   "question_5"
+    t.string   "question_6"
+    t.string   "question_7"
+    t.string   "question_8"
+    t.string   "open_home_time"
+    t.boolean  "landlord_status"
+    t.boolean  "tenant_status"
+    t.boolean  "offer_status"
+    t.index ["property_id"], name: "index_applications_on_property_id", using: :btree
+    t.index ["user_id"], name: "index_applications_on_user_id", using: :btree
+  end
+
+  create_table "open_home_times", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "application_id"
+    t.integer  "property_id"
+    t.datetime "time"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["application_id"], name: "index_open_home_times_on_application_id", using: :btree
+    t.index ["property_id"], name: "index_open_home_times_on_property_id", using: :btree
   end
 
   create_table "properties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
     t.string   "address"
-    t.text     "description",        limit: 65535
+    t.text     "description",      limit: 65535
     t.string   "publish"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.integer  "user_id"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "city"
     t.string   "suburb"
     t.string   "available"
@@ -51,9 +78,10 @@ ActiveRecord::Schema.define(version: 20170202222328) do
     t.integer  "floor_area"
     t.boolean  "smokers_allow"
     t.boolean  "pets_allow"
-    t.text     "upcoming_open_date", limit: 65535
-    t.string   "image"
+    t.string   "open_home_time"
     t.string   "picture"
+    t.index ["user_id", "created_at"], name: "index_properties_on_user_id_and_created_at", using: :btree
+    t.index ["user_id"], name: "index_properties_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -69,6 +97,26 @@ ActiveRecord::Schema.define(version: 20170202222328) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "current_address"
+    t.string   "birthday"
+    t.string   "identity_type"
+    t.string   "identify_number"
+    t.integer  "phone_number"
+    t.integer  "mobile_number"
+    t.string   "cv"
+    t.string   "identidy_image"
+    t.string   "note"
+    t.string   "question_1"
+    t.string   "question_2"
+    t.string   "question_3"
+    t.string   "question_4"
+    t.string   "question_5"
+    t.string   "question_6"
+    t.string   "question_7"
+    t.string   "question_8"
+    t.string   "gender"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

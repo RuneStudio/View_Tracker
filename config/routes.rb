@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  
+
   get 'static_pages/home'
 
   get 'static_pages/help'
@@ -18,8 +18,15 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   resources :properties do
-
+    resources :applications do
+      resources :open_home_times
+    end
+    resources :open_home_times
   end
+
+  resources :users, only: [:show]
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -29,8 +36,6 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
-  resources :properties
 
   # Example resource route with options:
   #   resources :products do

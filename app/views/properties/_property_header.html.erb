@@ -1,0 +1,22 @@
+<div class="header-image list-header" style="background-image: url(<%= @property.picture.url if @property.picture? %>);">
+
+ <div class="header-text">
+   <div class="text-content">
+     <%= @property.title %>
+   </div>
+
+   <div class="row">
+      <div class="col s6">
+        <%= button_to "Apply", new_property_application_path(@property, @application),
+           :class => "waves-effect waves-light btn", :method => :get %>
+      </div>
+
+      <div class="col s6">
+        <%= button_to "Add to watchlist", new_property_application_path(@property, @application),
+                 :class => "waves-effect waves-light btn", :method => :get %>
+      </div>
+
+    </div>
+
+ </div>
+</div>

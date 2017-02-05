@@ -1,0 +1,13 @@
+<%= render "applications/new_application_header" %>
+
+<div class="container page-container">
+
+  <h1>New Open Home Time</h1>
+
+  <%= render 'form', open_home_time: @open_home_time %>
+
+  <br/>
+  
+  <%= link_to 'Back to view application', property_application_path(params[:property_id], params[:application_id]) %>
+
+</div>

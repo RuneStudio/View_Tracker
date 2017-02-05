@@ -1,35 +1,140 @@
-<%= render "shared/list_header" %>
+<%= render "property_header" %>
 
 <div class="container">
   <p id="notice"><%= notice %></p>
 
-  <h1>Property</h1>
+  <div class="row">
+    <div class="col s6">
+      <h1>Property</h1>
 
-  <p>
-    <strong>Title:</strong>
-    <%= @property.title %>
-  </p>
+      <p>
+        <strong>Title:</strong>
+        <%= @property.title %>
+      </p>
 
-  <p>
-    <strong>Address:</strong>
-    <%= @property.address %>
-  </p>
+      <p>
+        <strong>Address:</strong>
+        <%= @property.address %>
+      </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= @property.description %>
-  </p>
+      <p>
+        <strong>Description:</strong>
+        <%= @property.description %>
+      </p>
 
-  <p>
-    <strong>Image:</strong>
-    <td><%= image_tag @property.picture.url if @property.picture? %><td>
-  </p>
+      <p>
+        <strong>Publish:</strong>
+        <%= @property.publish %>
+      </p>
 
-  <p>
-    <strong>Publish:</strong>
-    <%= @property.publish %>
-  </p>
+      <%= link_to('Add open home time', new_property_open_home_time_path(@property.id)) %>
 
-  <%= link_to 'Edit', edit_property_path(@property) %> |
-  <%= link_to 'Back', properties_path %>
+      <br/>
+      <%= link_to 'Edit', edit_property_path(@property) %> |
+      <%= link_to 'Back', properties_path %>
+    </div>
+    <div class="col s6">
+
+      <!-- Landloard view area -->
+      <% if @property.user_id == current_user.id %>
+      <h4>Upcoming open home time</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Who is coming?</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @property.open_home_times.each do |open_home_time| %>
+              <tr>
+                <td><%= open_home_time.time %></td>
+                <td><%= open_home_time.user.first_name %> <%= open_home_time.user.last_name %></td>
+                <td><%= link_to('Edit', edit_property_open_home_time_path(@property, open_home_time.id)) %>
+</td>
+                <td><%= link_to('Delete', root_path) %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      <h4>Available Applications</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @property.applications.each do |application| %>
+              <tr>
+                <td><%= application.user.first_name %> <%= application.user.last_name %></td>
+                <td><%= link_to 'Show', property_application_path(application.property_id, application) %></td>
+                <td><%= link_to 'Edit', edit_property_application_path(application.property_id, application) %></td>
+                <td><%= link_to 'Destroy', property_application_path(application.property_id, application), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
+      <!-- Landlord view ends -->
+
+      <!-- Tenant view area -->
+      <% if @property.user_id != current_user.id %>
+        <h4>Publisher: <%= @property.user.first_name %></h4>
+        <h4>Available open home time</h4>
+        <table class="striped" >
+          <thead>
+            <tr>
+                <th data-field="id">Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @property.open_home_times.each do |open_home_time| %>
+              <% if open_home_time.user_id == @property.user_id %>
+                <tr>
+                  <td><%= open_home_time.time %></td>
+                  <td><%= open_home_time.user.first_name %> <%= open_home_time.user.last_name %></td>
+                  <td><%= link_to('Edit', edit_property_open_home_time_path(@property, open_home_time.id)) %>
+  </td>
+                  <td><%= link_to('Delete', root_path) %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+
+      <br/>
+
+      <% if Application.all.my_application.count==0 %>
+
+      <%= button_to "Apply", new_property_application_path(@property, @application),
+            :class => "waves-effect waves-light btn", :method => :get %>
+
+      <% else %>
+
+      You have applied!!
+
+      <% end %>
+
+      <h4>My Applications</h4>
+      <% Application.all.my_application.each do |application| %>
+        <tr>
+          <td><%= application.title %></td>
+          <td><%= link_to 'Edit', edit_property_application_path(application.property_id, application) %></td>
+
+        </tr>
+      <% end %>
+
+      <% end %>
+
+      <!-- Tenant view ends -->
+
+    </div>
+  </div>
 </div>

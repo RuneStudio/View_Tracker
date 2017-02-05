@@ -3,15 +3,24 @@
      <a href="/" class="brand-logo"><%= image_tag "logo.png" %><spam style="font-size:15px;">Beta</spam></a>
      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
      <ul id="nav-mobile" class="right hide-on-med-and-down">
+       <% unless user_signed_in? %>
         <li>
           <%= link_to('Add A Open Home', new_property_path) %>
         </li>
+      <% end %>
         <li>
           <%= link_to('Search Property', properties_path) %>
         </li>
         <% if user_signed_in? %>
           <li>
-            <%= link_to('Manage Property', properties_path) %>
+            <%= link_to('My Property', properties_path(status: "my_properties")) %>
+          </li>
+
+          <li>
+            <%= link_to('My Watchlist', properties_path(status: "my_watchlist")) %>
+          </li>
+          <li>
+            <%= link_to('Profile',  edit_user_registration_path) %>
           </li>
         <% end %>
         <% if user_signed_in? %>

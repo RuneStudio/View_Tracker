@@ -6,12 +6,19 @@ class PropertiesController < ApplicationController
   # GET /properties
   # GET /properties.json
   def index
-    @properties = Property.all
+    if params[:status]=="my_properties"
+      @properties = Property.all.where(user_id: current_user.id)
+    elsif params[:status]=="my_watchlist"
+      @properties = Property.all.where(user_id: current_user.id)
+    else
+      @properties = Property.all
+    end
   end
 
   # GET /properties/1
   # GET /properties/1.json
   def show
+    @property = Property.find(params[:id])
   end
 
   # GET /properties/new
@@ -27,6 +34,7 @@ class PropertiesController < ApplicationController
   # POST /properties.json
   def create
     @property = Property.new(property_params)
+    @property.user_id = current_user.id
 
     respond_to do |format|
       if @property.save
@@ -71,6 +79,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:title, :description, :publish, :picture)
+      params.require(:property).permit(:title, :description, :publish, :picture, :open_home_time)
     end
 end

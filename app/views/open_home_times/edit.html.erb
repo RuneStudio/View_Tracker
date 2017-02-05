@@ -1,0 +1,12 @@
+<%= render "applications/new_application_header" %>
+
+<div class="container page-container">
+
+  <h1>Editing Open Home Time</h1>
+
+  <%= render 'form', open_home_time: @open_home_time %>
+
+  <%= link_to 'Show', property_open_home_time_path(@open_home_time.property) %> |
+  <%= link_to 'Back', property_open_home_times_path(@open_home_time.property)%>
+
+</div>

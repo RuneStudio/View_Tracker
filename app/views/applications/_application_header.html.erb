@@ -1,0 +1,12 @@
+<div class="header-image application-header" style="background-image: url(<%=  @application.property.picture.url if   @application.property.picture? %>);">
+>
+
+ <div class="header-text">
+   <div class="text-content">
+     Application for <%= @application.property[:title] %>
+     <br/>
+     <h4>From <%= @application.user.email %></h4>
+   </div>
+
+ </div>
+</div>

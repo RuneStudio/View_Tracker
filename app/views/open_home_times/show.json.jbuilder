@@ -1,0 +1,1 @@
+json.partial! "open_home_times/open_home_time", open_home_time: @open_home_time

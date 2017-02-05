@@ -1,0 +1,22 @@
+<%= form_for(open_home_time, :url => property_open_home_times_path) do |f| %>
+  <% if open_home_time.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(open_home_time.errors.count, "error") %> prohibited this open_home_time from being saved:</h2>
+
+      <ul>
+      <% open_home_time.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :time %>
+    <%= f.date_field :time %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

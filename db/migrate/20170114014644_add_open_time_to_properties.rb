@@ -15,6 +15,5 @@ class AddOpenTimeToProperties < ActiveRecord::Migration[5.0]
     add_column :properties, :floor_area, :integer
     add_column :properties, :smokers_allow, :boolean
     add_column :properties, :pets_allow, :boolean
-    add_column :properties, :upcoming_open_date, :text
   end
 end

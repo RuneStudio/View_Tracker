@@ -1,0 +1,10 @@
+<%= render "applications/application_header" %>
+
+<h1>Editing Application</h1>
+
+<%= render 'form', application: @application %>
+
+<%= link_to('Add open home time', new_property_application_open_home_time_path( @application.property, @application )) %>
+
+<%= link_to 'Show', property_application_path %> |
+<%= link_to 'Back', property_applications_path %>
