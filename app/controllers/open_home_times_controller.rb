@@ -34,7 +34,7 @@ class OpenHomeTimesController < ApplicationController
 
     respond_to do |format|
       if @open_home_time.save
-        format.html { redirect_to property_open_home_times_path(params[:property_id]), notice: 'Open home time was successfully created.' }
+        format.html { redirect_to property_path(params[:property_id]), notice: 'Open home time was successfully created.' }
         format.json { render :show, status: :created, location: @open_home_time }
       else
         format.html { render :new }

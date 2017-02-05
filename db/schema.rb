@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170204200405) do
+ActiveRecord::Schema.define(version: 20170205084956) do
 
   create_table "applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title"
@@ -46,13 +46,13 @@ ActiveRecord::Schema.define(version: 20170204200405) do
   end
 
   create_table "open_home_times", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "application_id"
+    t.integer  "user_id"
     t.integer  "property_id"
     t.datetime "time"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.index ["application_id"], name: "index_open_home_times_on_application_id", using: :btree
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["property_id"], name: "index_open_home_times_on_property_id", using: :btree
+    t.index ["user_id"], name: "index_open_home_times_on_application_id", using: :btree
   end
 
   create_table "properties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -80,6 +80,12 @@ ActiveRecord::Schema.define(version: 20170204200405) do
     t.boolean  "pets_allow"
     t.string   "open_home_time"
     t.string   "picture"
+    t.string   "tenant_id"
+    t.integer  "rent"
+    t.string   "list_type"
+    t.string   "house_type"
+    t.datetime "available_date"
+    t.integer  "contract_length"
     t.index ["user_id", "created_at"], name: "index_properties_on_user_id_and_created_at", using: :btree
     t.index ["user_id"], name: "index_properties_on_user_id", using: :btree
   end

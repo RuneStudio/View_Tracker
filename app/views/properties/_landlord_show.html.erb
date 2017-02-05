@@ -1,0 +1,28 @@
+<h4>Upcoming open home time</h4>
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Who is coming?</th>
+      <th>View application</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @property.open_home_times.each do |open_home_time| %>
+      <tr>
+        <td><%= open_home_time.time %></td>
+        <td><%= open_home_time.user.first_name %> <%= open_home_time.user.last_name %></td>
+
+          <% @property.applications.each do |application| %>
+            <% if open_home_time.user.id == application.user_id %>
+              <td><%= link_to(open_home_time.user.first_name, property_application_path(@property, application.id)) %></td>
+            <% elsif open_home_time.user == @property.user %>
+              <td><%= link_to("Landlord's open home time", property_open_home_time_path(@property, open_home_time.id)) %></td>
+              <td><%= link_to('Delete', root_path) %></td>
+            <% end %>
+          <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

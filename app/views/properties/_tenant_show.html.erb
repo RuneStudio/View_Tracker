@@ -1,0 +1,65 @@
+<h4>Publisher: <%= @property.user.first_name %></h4>
+<h4>Available open home time</h4>
+<table class="striped" >
+  <thead>
+    <tr>
+        <th data-field="id">Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @property.open_home_times.each do |open_home_time| %>
+      <% if open_home_time.user_id == @property.user_id %>
+        <tr>
+          <td><%= open_home_time.time %></td>
+          <td><%= open_home_time.user.first_name %> <%= open_home_time.user.last_name %></td>
+          <td><%= link_to('Edit', edit_property_open_home_time_path(@property, open_home_time.id)) %>
+</td>
+          <td><%= link_to('Delete', root_path) %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<% if Application.all.my_application.count==0 %>
+
+<%= button_to "Apply", new_property_application_path(@property, @application),
+      :class => "waves-effect waves-light btn", :method => :get %>
+
+<% else %>
+
+You have applied!!
+
+<% end %>
+
+<h4>My Application</h4>
+<table>
+  <thead>
+    <tr>
+        <th>Title</th>
+        <th>Open Home Time</th>
+        <th>Name</th>
+        <th>Action</th>
+        <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% Application.all.my_application.each do |application| %>
+      <tr>
+        <td><%= application.title %></td>
+          <% @property.open_home_times.each do |open_home_time| %>
+            <% if open_home_time.user_id == current_user.id %>
+                <td><%= open_home_time.time %></td>
+                <td><%= link_to(open_home_time.user.first_name, edit_property_application_path(@property, application.id)) %>
+</td>
+            <% end %>
+          <% end %>
+        <td><%= link_to 'Edit', edit_property_application_path(application.property_id, application) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
