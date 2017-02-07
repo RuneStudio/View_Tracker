@@ -1,5 +1,5 @@
 .home-description{
-
+  padding: 1rem 0;
 }
 
 .home-action-section{
@@ -7,3 +7,38 @@
   padding: 200px;
   color: #fff;
 }
+
+.city-row .col a .overlay{
+  height: 300px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 150px 0;
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px #000;
+}
+
+.city-row .col a .overlay.wellington{
+  background-image: url(<%= asset_path 'wellington.jpg' %>);
+}
+
+.city-row .col a .overlay.auckland{
+  background-image: url(<%= asset_path 'auckland.jpg' %>);
+}
+
+.city-row .col a .overlay.queenstown{
+  background-image: url(<%= asset_path 'queenstown.jpg' %>);
+}
+
+.city-row .col a .overlay.dunedin{
+  background-image: url(<%= asset_path 'dunedin.jpg' %>);
+}
+
+
+.city-row .col a .overlay:hover {
+    background-color:#000;
+    opacity:0.8;
+  }

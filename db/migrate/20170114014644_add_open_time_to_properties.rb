@@ -4,7 +4,6 @@ class AddOpenTimeToProperties < ActiveRecord::Migration[5.0]
     add_column :properties, :suburb, :string
     add_column :properties, :available, :string
     add_column :properties, :furnishings, :string
-    add_column :properties, :application, :string
     add_column :properties, :parking, :string
     add_column :properties, :feature, :string
     add_column :properties, :priority, :string

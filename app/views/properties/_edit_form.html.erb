@@ -1,0 +1,78 @@
+<%= form_for(property, html: { multipart: true }) do |f| %>
+  <% if property.errors.any? %>
+
+    <div id="error_explanation">
+      <h2><%= pluralize(property.errors.count, "error") %> prohibited this property from being saved:</h2>
+
+      <ul>
+      <% property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :picture %>
+    <%= f.file_field :picture %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rent %>
+    <%= f.number_field :rent %>
+  </div>
+
+  <div class="field">
+    <%= f.label :street_number %>
+    <%= f.number_field :street_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :street_name %>
+    <%= f.text_field :street_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :suburb %>
+    <%= f.text_field :suburb %>
+  </div>
+
+  <div class="field">
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bedrooms %>
+    <%= f.number_field :bedrooms %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bathrooms %>
+    <%= f.number_field :bathrooms %>
+  </div>
+
+  <div class="field">
+    <%= f.label :list_type %>
+    <%= f.select :list_type, Property::LIST_TYPES, { include_blank: 'Please select the list category' }-%>
+  </div>
+
+  <div class="field">
+    <%= f.label :house_type %>
+    <%= f.select :house_type, Property::HOUSE_TYPES, { include_blank: 'Please select the house type' }-%>
+  </div>
+
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label :publish %>
+    <%= f.text_field :publish %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

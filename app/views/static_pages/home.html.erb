@@ -1,16 +1,15 @@
 <%= render "shared/home_header" %>
 
 <!-- Portfolio Item Heading -->
-<div class="container">
-  <div class="section">
+  <div class="section white-section">
+    <div class="container">
 
     <!--   Icon Section   -->
     <div class="row home-description">
-      <h3 class="center">Why use Open Home Tracker</h2>
       <br/>
       <div class="col s12 m4">
         <div class="icon-block center">
-          <%= image_tag "for-rent.png" %>
+          <%= image_tag "for-rent.png", class: "home-icons" %>
           <h5 class="center">No fee for<br/> landlord or tenant</h5>
 
           <p class="light center">Whether you’re a buyer, seller or home owner; there’s more free data to help you decide what it’s worth than any other site in New Zealand.</p>
@@ -19,7 +18,7 @@
 
       <div class="col s12 m4">
         <div class="icon-block center">
-          <%= image_tag "notification.png" %>
+          <%= image_tag "notification.png", class: "home-icons"  %>
           <h5 class="center">Manage open home <br/>with real-time data</h5>
 
           <p class="light center">Whether you’re a buyer, seller or home owner; there’s more free data to help you decide what it’s worth than any other site in New Zealand.</p>
@@ -28,11 +27,48 @@
 
       <div class="col s12 m4">
         <div class="icon-block center">
-          <%= image_tag "stats.png" %>
+          <%= image_tag "stats.png", class: "home-icons"  %>
           <h5 class="center">Know more about <br/>your candidates</h5>
 
           <p class="light center">Whether you’re a buyer, seller or home owner; there’s more free data to help you decide what it’s worth than any other site in New Zealand.</p>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section white-section">
+  <div class="container">
+    <div class="row city-row">
+      <div class="col s6">
+        <%= link_to(root_path) do %>
+        <div class="overlay auckland">
+            <div class="title">Auckland</div>
+        </div>
+        <% end %>
+      </div>
+      <div class="col s6">
+        <%= link_to(root_path) do %>
+        <div class="overlay wellington">
+            <div class="title">Wellington</div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="row city-row">
+      <div class="col s6">
+        <%= link_to(root_path) do %>
+        <div class="overlay queenstown">
+            <div class="title">Queenstown</div>
+        </div>
+        <% end %>
+       </div>
+      <div class="col s6">
+        <%= link_to(root_path) do %>
+        <div class="overlay dunedin">
+            <div class="title">Dunedin</div>
+        </div>
+        <% end %>
       </div>
     </div>
   </div>

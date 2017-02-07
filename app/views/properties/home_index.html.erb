@@ -1,0 +1,74 @@
+<%= render "shared/search_header" %>
+
+<div class="container page-container">
+
+  <p id="notice"><%= notice %></p>
+
+
+  <table>
+    <tbody>
+      <div class="row">
+        <div class="col s8">
+          <% @properties.each do |property| %>
+              <div class="col s6">
+                <div class="card property">
+                  <%= link_to(property) do %>
+                    <div class="card-image property-image">
+                      <%= image_tag property.picture.url if property.picture? %>
+                    </div>
+                    <div class="card-header">
+                      <span class="property-rent">$ <%= property.rent %> per week</span>
+                    </div>
+                    <div class="card-content">
+                      <span class="property-type"><%= property.bedrooms %> Bedroom <%= property.house_type %></span>
+                      <br>
+                      <span class="property-location"><%= property.street_name %>, <%= property.suburb %>, <%= property.city %></span>
+
+                      <div class="row property-icon">
+                        <div class="col s12">
+                          <%= property.bedrooms %>
+                          <%= fa_icon "bed" %>
+                          <%= property.bathrooms %>
+                          <%= fa_icon "tint" %>
+                        </div>
+                      </div>
+
+                  </div>
+                  <% end %>
+                  <% unless current_user.nil? %>
+                    <% if property.user_id == current_user.id %>
+                      <div class="card-action">
+                        <%= link_to 'Edit', edit_property_path(property), :class => "waves-effect waves-light btn" %>
+                        <%= link_to 'Delete', property, method: :delete, data: { confirm: 'Are you sure?' }, :class => "waves-effect waves-light btn" %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+          <% end %>
+        </div>
+
+        <div class="col s4">
+
+          <div class="row">
+            <div class="col s12">
+              <div class="card-panel white-background-card">
+                <span class="text-title">Be the first to see new properties</span>
+                <br/><br/>
+                <span class="text-content">Register with us to get instant property alerts as soon as a property hits Rightmove, save properties and searches, personalise content, and more...
+</span>
+                <br/><br/>
+                <%= link_to('Add New Property', new_property_path, :class => "waves-effect waves-light btn full-width") %>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </tbody>
+  </table>
+
+  <br>
+
+</div>

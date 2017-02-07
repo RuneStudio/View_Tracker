@@ -11,6 +11,9 @@
 /tmp/
 /config/database.yml
 /public/uploads/*
+/public/assets/*
+/app/assets/images/*
+
 
 # Used by dotenv library to load environment variables.
 # .env
