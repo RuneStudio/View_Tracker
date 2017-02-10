@@ -19,7 +19,7 @@
          <td><%= @application.first_name %> <%= @application.last_name %></td>
          <td>
 
-           <% if @application.user.open_home_times.count == 0 %>
+           <!-- <% if @application.user.open_home_times.count == 0 %>
              <%= link_to('Add open home time', new_property_application_open_home_time_path( @application.property, @application )) %>
           <% else %>
              <% @application.user.open_home_times.each do |open_home_time| %>
@@ -27,7 +27,9 @@
                   <%= link_to(open_home_time.time, edit_property_application_open_home_time_path( @application.property, @application, open_home_time.id )) %>
               <% end %>
              <% end %>
-           <% end %>
+           <% end %> -->
+
+
 
          </td>
        </tr>
@@ -35,6 +37,7 @@
    </table>
 
   <%= link_to 'Edit', edit_property_application_path(@application) %> |
-  <%= link_to 'Back', property_applications_path %>
+  <%= link_to 'Back', property_applications_path %> |
+  <%= link_to('Add open home time', new_property_application_open_home_time_path( @application.property, @application )) %>
 
 </div>

@@ -1,10 +1,15 @@
 <%= render "applications/application_header" %>
 
-<h1>Editing Application</h1>
+<div class="container page-container">
 
-<%= render 'form', application: @application %>
+  <h1>Editing Application</h1>
 
-<%= link_to('Add open home time', new_property_application_open_home_time_path( @application.property, @application )) %>
+  <%= render 'form', application: @application %>
 
-<%= link_to 'Show', property_application_path %> |
-<%= link_to 'Back', property_applications_path %>
+  <%= button_to "Add Open Home Time", new_property_application_open_home_time_path( @application.property, @application ),
+        :class => "waves-effect waves-light btn", :method => :get %>
+
+  <%= link_to 'Show', property_application_path %> |
+  <%= link_to 'Back', property_applications_path %>
+
+</div>

@@ -39,35 +39,40 @@
 
 <div class="section white-section">
   <div class="container">
-    <div class="row city-row">
-      <div class="col s6">
-        <%= link_to(root_path) do %>
-        <div class="overlay auckland">
-            <div class="title">Auckland</div>
-        </div>
+    <div id="effect-1" class="row city-row effects clearfix">
+      <div class="col s6 img hover">
+        <%= link_to root_path do %>
+          <%= image_tag "auckland.jpg", class: "home-icons" %>
+            <div class="overlay">
+              <%= link_to 'Auckland', root_path, { :class=>"expand" } %>
+            </div>
         <% end %>
       </div>
-      <div class="col s6">
-        <%= link_to(root_path) do %>
-        <div class="overlay wellington">
-            <div class="title">Wellington</div>
-        </div>
+      <div class="col s6 img hover">
+        <%= link_to root_path do %>
+          <%= image_tag "wellington.jpg", class: "home-icons" %>
+            <div class="overlay">
+              <%= link_to 'Wellington', root_path, { :class=>"expand" } %>
+            </div>
         <% end %>
       </div>
     </div>
-    <div class="row city-row">
-      <div class="col s6">
-        <%= link_to(root_path) do %>
-        <div class="overlay queenstown">
-            <div class="title">Queenstown</div>
-        </div>
+    <div id="effect-1" class="row city-row effects clearfix">
+      <div class="col s6 img hover">
+        <%= link_to root_path do %>
+          <%= image_tag "queenstown.jpg", class: "home-icons" %>
+            <div class="overlay hover">
+              <%= link_to 'Queenstown', root_path, { :class=>"expand" } %>
+            </div>
         <% end %>
-       </div>
-      <div class="col s6">
-        <%= link_to(root_path) do %>
-        <div class="overlay dunedin">
-            <div class="title">Dunedin</div>
-        </div>
+
+      </div>
+      <div class="col s6 img hover">
+        <%= link_to root_path do %>
+          <%= image_tag "dunedin.jpg", class: "home-icons" %>
+            <div class="overlay">
+              <%= link_to 'Dunedin', root_path, { :class=>"expand" } %>
+            </div>
         <% end %>
       </div>
     </div>
@@ -79,9 +84,8 @@
     <div class="row center">
       <h5 class="center">Got a rental property?</h5>
       <br/>
-      <a class="waves-effect waves-light btn">List your next open home for free</a>
+      <%= button_to "List your next open home for free", new_property_path,
+            :class => "waves-effect waves-light btn", :method => :get %>
     </div>
   </div>
 </div>
-
-  <!-- /.row -->

@@ -1,0 +1,5 @@
+<%= button_to "Add Open Home Time", new_property_open_home_time_path(@property.id),
+      :class => "waves-effect waves-light btn", :method => :get %>
+<br/>
+<%= link_to 'Edit list', edit_property_path(@property) %> |
+<%= link_to 'Back', properties_path %>
