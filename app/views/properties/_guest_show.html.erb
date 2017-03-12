@@ -1,0 +1,25 @@
+<h5>Owner: <%= @property.user.first_name %> <%= @property.user.last_name %></h5>
+
+<table class="striped" >
+  <thead>
+    <tr>
+        <th data-field="id">Available open home time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @property.open_home_times.each do |open_home_time| %>
+      <% if open_home_time.user_id == @property.user_id %>
+        <tr>
+          <td><%= open_home_time.time %></td>
+          <td>Published by owner</td>
+</td>        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<br/>
+
+<%= button_to "Apply", new_property_application_path(params[:id], @application),
+   :class => "waves-effect waves-light btn", :method => :get %>
